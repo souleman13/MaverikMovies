@@ -1,1 +1,6 @@
-<p>details-page works!</p>
+<div *ngIf='movie'>
+    <div *ngFor='let key of keys(movie)'>
+        <span>{{key}}: {{movie[key]}}</span>
+    </div>
+    <div>{{movie.title}}</div>
+</div>

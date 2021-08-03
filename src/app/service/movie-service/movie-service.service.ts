@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -27,12 +26,19 @@ export class MovieService {
       return `https://gateway.maverik.com/movie/api/movie/title/${keywordString}?source=omdb`
     }
 
+    private imdbURL = (imdbID: string) => `https://gateway.maverik.com/movie/api/movie/${imdbID}?source=omdb`
+
     updateMovies = (keywords?:string[]): void => {
       console.log(keywords)
       console.log(this.moviesURL(keywords))
       this.http.get<any[]>(this.moviesURL(keywords)).subscribe(movies => this.movies.next(movies))
     }
+
     getMovies = (): Observable<any[]> => {
       return this.movies
+    }
+
+    getMovieByID = (imdbID: string): Observable<any> => {
+      return this.http.get<any>(this.imdbURL(imdbID))
     }
 }

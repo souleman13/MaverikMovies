@@ -8,7 +8,6 @@ import { SearchPageComponent } from './component/search-page/search-page.compone
 import { DetailsPageComponent } from './component/details-page/details-page.component';
 import { MovieListComponent } from './component/movie-list/movie-list.component';
 import { KeywordSearchComponent } from './component/keyword-search/keyword-search.component';
-import { MovieDetailsComponent } from './component/movie-details/movie-details.component';
 
 @NgModule({
   declarations: [
@@ -16,8 +15,7 @@ import { MovieDetailsComponent } from './component/movie-details/movie-details.c
     SearchPageComponent,
     DetailsPageComponent,
     MovieListComponent,
-    KeywordSearchComponent,
-    MovieDetailsComponent
+    KeywordSearchComponent
   ],
   imports: [
     BrowserModule,

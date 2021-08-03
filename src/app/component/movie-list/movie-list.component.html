@@ -1,4 +1,6 @@
-<span *ngFor='let movie of movies'>
-    <div>{{movie.title}}</div>
-    <img src={{movie.poster}} alt={{movie.title}}>
-</span>
+<div *ngIf='movies'>
+    <span *ngFor='let movie of movies'>
+        <div>{{movie.title}}</div>
+        <a routerLink="/details/{{movie.imdbID}}"><img src={{movie.poster}} alt={{movie.title}}></a>
+    </span>
+</div>

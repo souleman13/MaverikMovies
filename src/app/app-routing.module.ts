@@ -4,7 +4,7 @@ import { SearchPageComponent } from './component/search-page/search-page.compone
 import { DetailsPageComponent } from './component/details-page/details-page.component';
 const routes: Routes = [
   { path: '', component: SearchPageComponent },
-  { path: 'details', component: DetailsPageComponent },
+  { path: 'details/:id', component: DetailsPageComponent },
 ];
 
 @NgModule({
