@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieService {
 
-  keywords: string[] = []
-  movies: any[] = []
+  movies = new Subject<any[]>()
 
   constructor(
     private http: HttpClient
@@ -27,7 +27,12 @@ export class MovieService {
       return `https://gateway.maverik.com/movie/api/movie/title/${keywordString}?source=omdb`
     }
 
+    updateMovies = (keywords?:string[]): void => {
+      console.log(keywords)
+      console.log(this.moviesURL(keywords))
+      this.http.get<any[]>(this.moviesURL(keywords)).subscribe(movies => this.movies.next(movies))
+    }
     getMovies = (): Observable<any[]> => {
-      return this.http.get<any[]>(this.moviesURL())
+      return this.movies
     }
 }

@@ -1,1 +1,7 @@
-<p>keyword-search works!</p>
+<div>
+    <button (click)="search()">Search</button>
+    <input id='new-keyword' #keyword />
+    <button (click)="add(keyword.value); keyword.value=''">Add keyword</button>
+    <button (click)="clear()">Clear</button>
+    <span *ngFor='let keyword of keywords'>{{keyword}} </span>
+</div>

@@ -8,17 +8,18 @@ import { MovieService } from '../../service/movie-service/movie-service.service'
 })
 export class MovieListComponent implements OnInit {
 
-  movies:any = []
+  movies:any
 
   constructor(
       private movieService: MovieService
-  ) { }
+  ) { 
+  }
 
   ngOnInit(): void {
-      this.getMovies()
+    this.getMovies()
   }
 
   getMovies(): void {
-      this.movies = this.movieService.getMovies().subscribe(movies => this.movies = movies)
+    this.movies = this.movieService.getMovies().subscribe(movies => {this.movies = movies;console.log(movies)})
   }
 }

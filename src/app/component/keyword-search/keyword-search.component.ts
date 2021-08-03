@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MovieService } from '../../service/movie-service/movie-service.service'
 
 @Component({
   selector: 'keyword-search',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class KeywordSearchComponent implements OnInit {
 
-  constructor() { }
+  keywords: string[] = []
+
+  constructor(private movieService: MovieService) { }
 
   ngOnInit(): void {
   }
 
+  add(keyword: string): void {
+    this.keywords.push(keyword)
+  }
+
+  clear(): void {
+    this.keywords = []
+  }
+
+  search(): void {
+    this.movieService.updateMovies(this.keywords)
+  }
 }
